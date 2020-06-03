@@ -1,0 +1,30 @@
+{
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint"],
+  "extends": ["plugin:@typescript-eslint/recommended"],
+  "parserOptions": {
+    "ecmaVersion": 2018,
+    "sourceType": "module"
+  },
+  "rules": {
+    "no-multiple-empty-lines":"warn",
+    "semi": ["error", "never"],
+    "quotes": ["error", "single"],
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/no-explicit-any": 0,
+    "@typescript-eslint/no-inferrable-types": [
+      "warn", {
+        "ignoreParameters": true
+      }
+    ],
+    "@typescript-eslint/no-unused-vars": "warn",
+    "@typescript-eslint/space-before-function-paren": "warn",
+    "@typescript-eslint/type-annotation-spacing": "warn",
+    "space-in-parens": ["error", "never"],
+    "keyword-spacing": "warn",
+    "no-whitespace-before-property": "error",
+    "no-trailing-spaces":"error",
+    "no-multi-spaces": "warn"
+  }
+}
