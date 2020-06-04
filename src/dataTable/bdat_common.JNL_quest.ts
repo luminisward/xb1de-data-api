@@ -1,5 +1,5 @@
 import _ from 'lodash'
-import {BaseParser, BaseFields} from './index'
+import {BaseParser, BaseFields, getParser} from './index'
 
 export interface TableType extends BaseFields {
     row_id: number
@@ -83,27 +83,195 @@ export interface TableType extends BaseFields {
     up_relate_B3: number
     flg_relate_B4: number
     up_relate_B4: number
+
+    [key: string]: any
 }
 
 export interface TableWithText extends TableType {
     title: any
+    npc_id: any
+    cnd_questID: any
 
+    [key: string]: any
 }
 
-export default class Bdat_qtMNU_qt extends BaseParser {
+enum TaskType {
+    KillEnemy = 1,
+    GetItem,
+    TalkNpc,
+    CompleteQuest,
+    InteractObject,
+}
 
-    async parse (): Promise<any[]> {
+export default class QuestParser extends BaseParser {
+
+    async parse(): Promise<any[]> {
         return []
     }
 
-    async parseOne (row_id: number): Promise<any> {
+    async parseOne(row_id: number): Promise<TableWithText> {
         const row = await this.db.getDataTableRow<TableType>({table: this.table, row_id})
-        const newRow: TableWithText = _.clone(row)
+        const result: TableWithText = _.clone(row)
 
-        newRow.title = await this.db.getMsSingle({table: this.msTable, row_id: row.title, language: this.language})
-        console.log(newRow)
+        result.title = await this.db.getMsSingle({table: this.msTable, row_id: row.title, language: this.language})
 
-        return newRow
+        // npc_id && npcmeetID
+        {
+            const npcParser = await getParser('bdat_common.FLD_npclist', this.language)
+            result.npc_id = result.npc_id > 0 ? await npcParser.parseOne(row.npc_id) : null
+            result.npcmeetID1 = result.npcmeetID1 > 0 ? await npcParser.parseOne(row.npcmeetID1) : null
+            result.npcmeetID2 = result.npcmeetID2 > 0 ? await npcParser.parseOne(row.npcmeetID2) : null
+        }
+
+        // cnd_questID
+        {
+            if (result.cnd_questID > 0) {
+                const questParser = await getParser(QuestParser.getQuestTableName(row.cnd_questID), this.language)
+                result.cnd_questID = await questParser.parseOne(row.cnd_questID)
+            } else {
+                result.cnd_questID = null
+            }
+        }
+
+        // reward
+        {
+            const itmParser = await getParser('bdat_common.ITM_itemlist', this.language)
+            for (const ab of ['A', 'B']) {
+                for (let i = 1; i <= 3; i++) {
+                    const key = `reward_${ab}${i}`
+                    result[key] = result[key] > 0 ? await itmParser.parseOne(row[key]) : null
+                }
+            }
+        }
+
+        // 任务步骤
+        {
+            for (const ab of ['A', 'B']) {
+                for (let i = 1; i <= 4; i++) {
+                    const type_succ = `type_succ_${ab}${i}`
+                    const cnd_succ = `cnd_succ_${ab}${i}`
+                    const num_succ = `num_succ_${ab}${i}`
+
+
+                    result[type_succ] = row[type_succ] > 0 ? TaskType[row[type_succ]] : null
+
+                    if (row[cnd_succ] > 0) {
+                        switch (row[type_succ]) {
+
+                            case TaskType.KillEnemy:
+                                break
+
+                            case TaskType.GetItem:
+                                const itmParser = await getParser('bdat_common.ITM_itemlist', this.language)
+                                result[cnd_succ] = await itmParser.parseOne(row[cnd_succ])
+                                break
+
+                            case TaskType.TalkNpc:
+                                const npcParser = await getParser('bdat_common.FLD_npclist', this.language)
+                                result[cnd_succ] = await npcParser.parseOne(row[cnd_succ])
+                                break
+
+                            case TaskType.CompleteQuest:
+                                const questParser = await getParser(QuestParser.getQuestTableName(row[cnd_succ]), this.language)
+                                result[cnd_succ] = await questParser.parseOne(row[cnd_succ])
+                        }
+
+                    } else {
+                        result[cnd_succ] = null
+                    }
+                }
+            }
+        }
+
+
+        // menu_text
+        {
+            const number = /\d+/.exec(this.table)
+            const mapid = number && number[0]
+            const menuParser = await getParser(`bdat_qt${mapid}.MNU_qt${mapid}`, this.language)
+            result.menu = await menuParser.parseOne(row_id)
+        }
+        return result
+
+    }
+
+    static getQuestTableName(row_id: number): string {
+        switch (true) {
+            case 1 <= row_id && row_id <= 85:
+                return 'bdat_common.JNL_quest0101'
+
+            case 86 <= row_id && row_id <= 105:
+                return 'bdat_common.JNL_quest0201'
+
+            case 116 <= row_id && row_id <= 171:
+                return 'bdat_common.JNL_quest0301'
+
+            case 174 <= row_id && row_id <= 260:
+                return 'bdat_common.JNL_quest0401'
+
+            case 276 <= row_id && row_id <= 310:
+                return 'bdat_common.JNL_quest0501'
+
+            case 311 <= row_id && row_id <= 350:
+                return 'bdat_common.JNL_quest0601'
+
+            case 351 <= row_id && row_id <= 464:
+                return 'bdat_common.JNL_quest0701'
+
+            case 465 <= row_id && row_id <= 465:
+                return 'bdat_common.JNL_quest0801'
+
+            case 466 <= row_id && row_id <= 475:
+                return 'bdat_common.JNL_quest0901'
+
+            case 496 <= row_id && row_id <= 530:
+                return 'bdat_common.JNL_quest1001'
+
+            case 536 <= row_id && row_id <= 603:
+                return 'bdat_common.JNL_quest1101'
+
+            case 611 <= row_id && row_id <= 620:
+                return 'bdat_common.JNL_quest1201'
+
+            case 641 <= row_id && row_id <= 680:
+                return 'bdat_common.JNL_quest1301'
+
+            case 681 <= row_id && row_id <= 720:
+                return 'bdat_common.JNL_quest1401'
+
+            case 721 <= row_id && row_id <= 750:
+                return 'bdat_common.JNL_quest1501'
+
+            case 751 <= row_id && row_id <= 810:
+                return 'bdat_common.JNL_quest1601'
+
+            case 811 <= row_id && row_id <= 849:
+                return 'bdat_common.JNL_quest1701'
+
+            case 850 <= row_id && row_id <= 850:
+                return 'bdat_common.JNL_quest1801'
+
+            case 851 <= row_id && row_id <= 890 :
+                return 'bdat_common.JNL_quest1901'
+
+            case 891 <= row_id && row_id <= 920:
+                return 'bdat_common.JNL_quest2001'
+
+            case 921 <= row_id && row_id <= 930:
+                return 'bdat_common.JNL_quest2101'
+
+            case 961 <= row_id && row_id <= 970:
+                return 'bdat_common.JNL_quest2201'
+
+            case 1001 <= row_id && row_id <= 1058:
+                return 'bdat_common.JNL_quest2501'
+
+            case 1201 <= row_id && row_id <= 1204:
+                return 'bdat_common.JNL_quest2601'
+
+            default:
+                throw new Error('No match quest ID ' + row_id)
+        }
 
     }
 }

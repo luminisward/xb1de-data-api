@@ -33,7 +33,7 @@ export interface TableWithText extends BaseFields {
 }
 
 
-export default class Bdat_qtMNU_qt extends BaseParser {
+export default class extends BaseParser {
 
     async parse (): Promise<TableWithText[]> {
         const rows = await this.db.getDataTable<TableType>({table: this.table})

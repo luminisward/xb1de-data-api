@@ -3,7 +3,7 @@ import {BaseParser, BaseFields} from './index'
 
 export interface TableType extends BaseFields {
   'row_id': number
-  'name': '筋力アップ',
+  'name': string,
   'cylinder_name': number
   'atr_type': number
   'rvs_status': number

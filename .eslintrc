@@ -19,7 +19,6 @@
       }
     ],
     "@typescript-eslint/no-unused-vars": "warn",
-    "@typescript-eslint/space-before-function-paren": "warn",
     "@typescript-eslint/type-annotation-spacing": "warn",
     "space-in-parens": ["error", "never"],
     "keyword-spacing": "warn",

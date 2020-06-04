@@ -21,16 +21,13 @@ interface RequestData {
 }
 
 app.use(async ctx => {
-
-    console.log(ctx.request.body)
-
-    // ctx.body = ctx.request.body
     const {game, table, row_id, language}: RequestData = ctx.request.body
 
-    const parser = await getParser(table, language)
-    const result = await parser.parseOne(row_id)
-    ctx.body = result
-
+    if(game === 'xb1') {
+        const parser = await getParser(table, language)
+        const result = await parser.parseOne(row_id)
+        ctx.body = result
+    }
 
 })
 

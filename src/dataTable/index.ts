@@ -4,8 +4,8 @@ const parserCache: { [key: string]: BaseParser } = {}
 
 export const getParser = async (tablename: string, language: string): Promise<BaseParser> => {
     const db = Db.getInstance()
+    const cacheKey = tablename + '.' + language
     const parserModuleName = tablename.replace(/\d+/g, '')
-    const cacheKey = parserModuleName + '.' + language
 
     if (!parserCache.hasOwnProperty(parserModuleName)) {
         const {default: Parser} = await import(`./${parserModuleName}`)
@@ -22,23 +22,27 @@ export interface BaseFields {
 export abstract class BaseParser {
 
     protected db: Db
-    protected table: string
+    protected table = ''
     msTable = ''
     protected language = 'cn'
 
-    constructor ({db, table, language}: { db: Db, table: string, language: string }) {
+    constructor({db, table, language}: { db: Db, table: string, language: string }) {
         this.db = db
-        this.table = table
-        this.msTable = this.table.split('.').map(s => s + '_ms').join('.')
         this.language = language
+        this.setTable(table)
     }
 
     abstract async parse(): Promise<any[]>
 
     abstract async parseOne(row_id: number): Promise<any>
 
-    fieldsWithoutRowID (row: BaseFields): string[] {
+    fieldsWithoutRowID(row: BaseFields): string[] {
         return Object.keys(row).filter(key => key !== 'row_id')
+    }
+
+    protected setTable(table: string) {
+        this.table = table
+        this.msTable = this.table.split('.').map(s => s + '_ms').join('.')
     }
 
 }
