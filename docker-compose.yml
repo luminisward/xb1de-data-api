@@ -1,0 +1,10 @@
+version: '3'
+services:
+  node:
+    image: node:lts-slim
+    ports:
+      - "3000:3000"
+    volumes:
+      - ".:/app"
+    working_dir: /app
+    entrypoint: node dist/index.js
