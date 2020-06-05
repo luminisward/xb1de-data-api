@@ -89,6 +89,7 @@ export interface TableType extends BaseFields {
 
 export interface TableWithText extends TableType {
     title: any
+    qst_genre: any
     npc_id: any
     cnd_questID: any
 
@@ -103,6 +104,13 @@ enum TaskType {
     InteractObject,
 }
 
+enum GenreType {
+    普通任务,
+    剧情任务,
+    子任务,
+    限时任务
+}
+
 export default class QuestParser extends BaseParser {
 
     async parse(): Promise<any[]> {
@@ -110,10 +118,15 @@ export default class QuestParser extends BaseParser {
     }
 
     async parseOne(row_id: number): Promise<TableWithText> {
+        const table = getQuestTableName(row_id)
+        this.setTable(table)
+
         const row = await this.db.getDataTableRow<TableType>({table: this.table, row_id})
         const result: TableWithText = _.clone(row)
 
         result.title = await this.db.getMsSingle({table: this.msTable, row_id: row.title, language: this.language})
+        result.qst_genre = GenreType[row.qst_genre]
+
 
         // npc_id && npcmeetID
         {
@@ -126,7 +139,7 @@ export default class QuestParser extends BaseParser {
         // cnd_questID
         {
             if (result.cnd_questID > 0) {
-                const questParser = await getParser(QuestParser.getQuestTableName(row.cnd_questID), this.language)
+                const questParser = await getParser(getQuestTableName(row.cnd_questID), this.language)
                 result.cnd_questID = await questParser.parseOne(row.cnd_questID)
             } else {
                 result.cnd_questID = null
@@ -159,6 +172,8 @@ export default class QuestParser extends BaseParser {
                         switch (row[type_succ]) {
 
                             case TaskType.KillEnemy:
+                                const eneParser = await getParser('bdat_common.BTL_enelist', this.language)
+                                result[cnd_succ] = await eneParser.parseOne(row[cnd_succ])
                                 break
 
                             case TaskType.GetItem:
@@ -172,7 +187,7 @@ export default class QuestParser extends BaseParser {
                                 break
 
                             case TaskType.CompleteQuest:
-                                const questParser = await getParser(QuestParser.getQuestTableName(row[cnd_succ]), this.language)
+                                const questParser = await getParser(getQuestTableName(row[cnd_succ]), this.language)
                                 result[cnd_succ] = await questParser.parseOne(row[cnd_succ])
                         }
 
@@ -195,83 +210,91 @@ export default class QuestParser extends BaseParser {
 
     }
 
-    static getQuestTableName(row_id: number): string {
-        switch (true) {
-            case 1 <= row_id && row_id <= 85:
-                return 'bdat_common.JNL_quest0101'
+}
 
-            case 86 <= row_id && row_id <= 105:
-                return 'bdat_common.JNL_quest0201'
 
-            case 116 <= row_id && row_id <= 171:
-                return 'bdat_common.JNL_quest0301'
+function getQuestTableName(row_id: number): string {
+    switch (true) {
+        case 1 <= row_id && row_id <= 85:
+            return 'bdat_common.JNL_quest0101'
 
-            case 174 <= row_id && row_id <= 260:
-                return 'bdat_common.JNL_quest0401'
+        case 86 <= row_id && row_id <= 105:
+            return 'bdat_common.JNL_quest0201'
 
-            case 276 <= row_id && row_id <= 310:
-                return 'bdat_common.JNL_quest0501'
+        case 116 <= row_id && row_id <= 171:
+            return 'bdat_common.JNL_quest0301'
 
-            case 311 <= row_id && row_id <= 350:
-                return 'bdat_common.JNL_quest0601'
+        case 174 <= row_id && row_id <= 260:
+            return 'bdat_common.JNL_quest0401'
 
-            case 351 <= row_id && row_id <= 464:
-                return 'bdat_common.JNL_quest0701'
+        case 261 <= row_id && row_id <= 270:
+            return 'bdat_common.JNL_quest0402'
 
-            case 465 <= row_id && row_id <= 465:
-                return 'bdat_common.JNL_quest0801'
+        case 276 <= row_id && row_id <= 310:
+            return 'bdat_common.JNL_quest0501'
 
-            case 466 <= row_id && row_id <= 475:
-                return 'bdat_common.JNL_quest0901'
+        case 311 <= row_id && row_id <= 350:
+            return 'bdat_common.JNL_quest0601'
 
-            case 496 <= row_id && row_id <= 530:
-                return 'bdat_common.JNL_quest1001'
+        case 351 <= row_id && row_id <= 464:
+            return 'bdat_common.JNL_quest0701'
 
-            case 536 <= row_id && row_id <= 603:
-                return 'bdat_common.JNL_quest1101'
+        case 465 <= row_id && row_id <= 465:
+            return 'bdat_common.JNL_quest0801'
 
-            case 611 <= row_id && row_id <= 620:
-                return 'bdat_common.JNL_quest1201'
+        case 466 <= row_id && row_id <= 475:
+            return 'bdat_common.JNL_quest0901'
 
-            case 641 <= row_id && row_id <= 680:
-                return 'bdat_common.JNL_quest1301'
+        case 496 <= row_id && row_id <= 530:
+            return 'bdat_common.JNL_quest1001'
 
-            case 681 <= row_id && row_id <= 720:
-                return 'bdat_common.JNL_quest1401'
+        case 536 <= row_id && row_id <= 603:
+            return 'bdat_common.JNL_quest1101'
 
-            case 721 <= row_id && row_id <= 750:
-                return 'bdat_common.JNL_quest1501'
+        case 611 <= row_id && row_id <= 620:
+            return 'bdat_common.JNL_quest1201'
 
-            case 751 <= row_id && row_id <= 810:
-                return 'bdat_common.JNL_quest1601'
+        case 626 <= row_id && row_id <= 640:
+            return 'bdat_common.JNL_quest1202'
 
-            case 811 <= row_id && row_id <= 849:
-                return 'bdat_common.JNL_quest1701'
+        case 641 <= row_id && row_id <= 680:
+            return 'bdat_common.JNL_quest1301'
 
-            case 850 <= row_id && row_id <= 850:
-                return 'bdat_common.JNL_quest1801'
+        case 681 <= row_id && row_id <= 720:
+            return 'bdat_common.JNL_quest1401'
 
-            case 851 <= row_id && row_id <= 890 :
-                return 'bdat_common.JNL_quest1901'
+        case 721 <= row_id && row_id <= 750:
+            return 'bdat_common.JNL_quest1501'
 
-            case 891 <= row_id && row_id <= 920:
-                return 'bdat_common.JNL_quest2001'
+        case 751 <= row_id && row_id <= 810:
+            return 'bdat_common.JNL_quest1601'
 
-            case 921 <= row_id && row_id <= 930:
-                return 'bdat_common.JNL_quest2101'
+        case 811 <= row_id && row_id <= 849:
+            return 'bdat_common.JNL_quest1701'
 
-            case 961 <= row_id && row_id <= 970:
-                return 'bdat_common.JNL_quest2201'
+        case 850 <= row_id && row_id <= 850:
+            return 'bdat_common.JNL_quest1801'
 
-            case 1001 <= row_id && row_id <= 1058:
-                return 'bdat_common.JNL_quest2501'
+        case 851 <= row_id && row_id <= 890 :
+            return 'bdat_common.JNL_quest1901'
 
-            case 1201 <= row_id && row_id <= 1204:
-                return 'bdat_common.JNL_quest2601'
+        case 891 <= row_id && row_id <= 920:
+            return 'bdat_common.JNL_quest2001'
 
-            default:
-                throw new Error('No match quest ID ' + row_id)
-        }
+        case 921 <= row_id && row_id <= 930:
+            return 'bdat_common.JNL_quest2101'
 
+        case 961 <= row_id && row_id <= 970:
+            return 'bdat_common.JNL_quest2201'
+
+        case 1001 <= row_id && row_id <= 1058:
+            return 'bdat_common.JNL_quest2501'
+
+        case 1201 <= row_id && row_id <= 1204:
+            return 'bdat_common.JNL_quest2601'
+
+        default:
+            throw new Error('No match quest ID ' + row_id)
     }
+
 }

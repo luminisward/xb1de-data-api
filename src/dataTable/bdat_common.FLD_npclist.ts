@@ -1,8 +1,7 @@
 import _ from 'lodash'
-import {BaseParser, BaseFields} from './index'
+import {BaseParser, BaseFields, getParser} from './index'
 
-export interface TableType extends BaseFields
-{
+export interface TableType extends BaseFields {
     'row_id': number
     'name': number
     'mob_name': number
@@ -45,23 +44,32 @@ export interface TableType extends BaseFields
 
 export interface TableWithText extends TableType {
     name: any
+    mob_name: any
     rlt_job: any
 
 }
 
 export default class Bdat_qtMNU_qt extends BaseParser {
 
-    async parse (): Promise<any[]> {
+    async parse(): Promise<any[]> {
         return []
     }
 
-    async parseOne (row_id: number): Promise<TableWithText> {
+    async parseOne(row_id: number): Promise<TableWithText> {
         const row = await this.db.getDataTableRow<TableType>({table: this.table, row_id})
         const newRow: TableWithText = _.clone(row)
 
         newRow.name = await this.db.getMsSingle({table: this.msTable, row_id: row.name, language: this.language})
         newRow.rlt_job = await this.db.getMsSingle({table: this.msTable, row_id: row.rlt_job, language: this.language})
-        // console.log(newRow)
+
+        newRow.mob_name = await this.db.getMsSingle({table: 'bdat_common_ms.MNU_name_ms', row_id: row.mob_name, language: this.language})
+
+        const lndParser = await getParser('bdat_common.landmarklist', this.language)
+        newRow.rlt_lnd = row.rlt_lnd > 0 ? await lndParser.parseOne(row.rlt_lnd) : null
+
+        const itemParser = await getParser('bdat_common.ITM_itemlist', this.language)
+        newRow.present = row.present > 0 ? await itemParser.parseOne(row.present) : null
+
 
         return newRow
 
