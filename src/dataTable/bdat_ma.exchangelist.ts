@@ -2,7 +2,6 @@ import _ from 'lodash'
 import {BaseParser, BaseFields, getParser} from './index'
 
 export interface TableType extends BaseFields {
-    'row_id': number
     'wpn1': number
     'head1': number
     'body1': number

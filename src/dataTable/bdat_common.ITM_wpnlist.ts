@@ -5,7 +5,6 @@ import {TableWithText as PcArtsType} from './bdat_common.pc_arts'
 
 
 export interface TableType extends BaseFields {
-    'row_id': number
     'name': number
     'resource': string,
     'def_mount': number

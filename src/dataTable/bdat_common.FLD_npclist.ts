@@ -2,7 +2,6 @@ import _ from 'lodash'
 import {BaseParser, BaseFields, getParser} from './index'
 
 export interface TableType extends BaseFields {
-    'row_id': number
     'name': number
     'mob_name': number
     'resource': number
@@ -47,7 +46,7 @@ export interface TableWithText extends TableType {
     name: any
     mob_name: any
     rlt_job: any
-
+    exc_talk_id: any
 }
 
 export default class Bdat_qtMNU_qt extends BaseParser {
@@ -82,8 +81,13 @@ export default class Bdat_qtMNU_qt extends BaseParser {
         for (let i = 1; i <= 5; i++) {
             const k = `exc_id${i}`
             result[k] = row[k] > 0 ? await exchangeParser.parseOne(row[k]) : null
-
         }
+
+        result.exc_talk_id = await this.db.getMsSingle({
+            table: `bdat_${exchangeMapId}_ms.autotalklist${MapId[0]}_ms`,
+            row_id: row.exc_talk_id,
+            language: this.language
+        })
 
 
         return result

@@ -17,7 +17,6 @@ enum ItemType {
 }
 
 export interface TableType extends BaseFields {
-    'row_id': number
     'itemType': number
     'itemID': number
     'icon': number

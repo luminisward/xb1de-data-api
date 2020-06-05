@@ -4,7 +4,6 @@ import {getParser} from './index'
 
 
 export interface TableType extends BaseFields {
-    'row_id': number,
     'name': number,
     'parts': number,
     'uni_flag': number,
