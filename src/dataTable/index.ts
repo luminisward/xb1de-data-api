@@ -40,7 +40,7 @@ export abstract class BaseParser {
         return Object.keys(row).filter(key => key !== 'row_id')
     }
 
-    protected setTable(table: string) {
+    protected setTable(table: string): void {
         this.table = table
         this.msTable = this.table.split('.').map(s => s + '_ms').join('.')
     }

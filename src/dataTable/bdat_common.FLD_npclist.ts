@@ -39,6 +39,7 @@ export interface TableType extends BaseFields {
     'present': number
     'exc_map_id': number
     'npc_unique_id': number
+    [key: string]: any
 }
 
 
@@ -57,21 +58,35 @@ export default class Bdat_qtMNU_qt extends BaseParser {
 
     async parseOne(row_id: number): Promise<TableWithText> {
         const row = await this.db.getDataTableRow<TableType>({table: this.table, row_id})
-        const newRow: TableWithText = _.clone(row)
+        const result: TableWithText = _.clone(row)
 
-        newRow.name = await this.db.getMsSingle({table: this.msTable, row_id: row.name, language: this.language})
-        newRow.rlt_job = await this.db.getMsSingle({table: this.msTable, row_id: row.rlt_job, language: this.language})
+        result.name = await this.db.getMsSingle({table: this.msTable, row_id: row.name, language: this.language})
+        result.rlt_job = await this.db.getMsSingle({table: this.msTable, row_id: row.rlt_job, language: this.language})
 
-        newRow.mob_name = await this.db.getMsSingle({table: 'bdat_common_ms.MNU_name_ms', row_id: row.mob_name, language: this.language})
+        result.mob_name = await this.db.getMsSingle({table: 'bdat_common_ms.MNU_name_ms', row_id: row.mob_name, language: this.language})
 
         const lndParser = await getParser('bdat_common.landmarklist', this.language)
-        newRow.rlt_lnd = row.rlt_lnd > 0 ? await lndParser.parseOne(row.rlt_lnd) : null
+        result.rlt_lnd = row.rlt_lnd > 0 ? await lndParser.parseOne(row.rlt_lnd) : null
 
         const itemParser = await getParser('bdat_common.ITM_itemlist', this.language)
-        newRow.present = row.present > 0 ? await itemParser.parseOne(row.present) : null
+        result.present = row.present > 0 ? await itemParser.parseOne(row.present) : null
 
 
-        return newRow
+        const mapIdParser = await getParser('bdat_common.FLD_maplist', this.language)
+        const {id_name: exchangeMapId} = await mapIdParser.parseOne(row.exc_map_id)
+
+        const MapId: any = /\d{4}/.exec(exchangeMapId)
+        const mapTable = `bdat_${exchangeMapId}.exchangelist${MapId[0]}`
+        const exchangeParser = await getParser(mapTable, this.language)
+
+        for (let i = 1; i <= 5; i++) {
+            const k = `exc_id${i}`
+            result[k] = row[k] > 0 ? await exchangeParser.parseOne(row[k]) : null
+
+        }
+
+
+        return result
 
     }
 }

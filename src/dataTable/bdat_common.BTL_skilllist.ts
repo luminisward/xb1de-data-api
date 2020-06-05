@@ -2,37 +2,37 @@ import _ from 'lodash'
 import {BaseParser, BaseFields} from './index'
 
 export interface TableType extends BaseFields {
-  'row_id': number
-  'name': string,
-  'cylinder_name': number
-  'atr_type': number
-  'rvs_status': number
-  'rvs_type': number
-  'attach': number
-  'accum': number
-  'max': number
-  'val_type': number
-  'lower_E': number
-  'upper_E': number
-  'lower_D': number
-  'upper_D': number
-  'lower_C': number
-  'upper_C': number
-  'lower_B': number
-  'upper_B': number
-  'lower_A': number
-  'upper_A': number
-  'lower_S': number
-  'upper_S': number
-  'percent_E': number
-  'percent_D': number
-  'percent_C': number
-  'percent_B': number
-  'percent_A': number
-  'percent_S': number
-  'money': number
-  'category': number
-  'rvs_caption': number
+    'row_id': number
+    'name': string,
+    'cylinder_name': number
+    'atr_type': number
+    'rvs_status': number
+    'rvs_type': number
+    'attach': number
+    'accum': number
+    'max': number
+    'val_type': number
+    'lower_E': number
+    'upper_E': number
+    'lower_D': number
+    'upper_D': number
+    'lower_C': number
+    'upper_C': number
+    'lower_B': number
+    'upper_B': number
+    'lower_A': number
+    'upper_A': number
+    'lower_S': number
+    'upper_S': number
+    'percent_E': number
+    'percent_D': number
+    'percent_C': number
+    'percent_B': number
+    'percent_A': number
+    'percent_S': number
+    'money': number
+    'category': number
+    'rvs_caption': number
 }
 
 

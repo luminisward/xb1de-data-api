@@ -163,7 +163,7 @@ export default class QuestParser extends BaseParser {
                 for (let i = 1; i <= 4; i++) {
                     const type_succ = `type_succ_${ab}${i}`
                     const cnd_succ = `cnd_succ_${ab}${i}`
-                    const num_succ = `num_succ_${ab}${i}`
+                    // const num_succ = `num_succ_${ab}${i}`
 
 
                     result[type_succ] = row[type_succ] > 0 ? TaskType[row[type_succ]] : null

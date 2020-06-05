@@ -32,6 +32,8 @@
       {
         "SwitchCase": 1
       }
-    ]
+    ],
+    "space-infix-ops": ["error"],
+    "@typescript-eslint/comma-spacing": "error"
   }
 }
