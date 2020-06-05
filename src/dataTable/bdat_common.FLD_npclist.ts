@@ -83,12 +83,8 @@ export default class Bdat_qtMNU_qt extends BaseParser {
             result[k] = row[k] > 0 ? await exchangeParser.parseOne(row[k]) : null
         }
 
-        result.exc_talk_id = await this.db.getMsSingle({
-            table: `bdat_${exchangeMapId}_ms.autotalklist${MapId[0]}_ms`,
-            row_id: row.exc_talk_id,
-            language: this.language
-        })
-
+        const extalkParser = await getParser(`bdat_${exchangeMapId}.extalklist${MapId[0]}`, this.language)
+        result.exc_talk_id = row.exc_talk_id > 0 ? await extalkParser.parseOne(row.exc_talk_id) : null
 
         return result
 
