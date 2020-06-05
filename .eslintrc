@@ -8,13 +8,14 @@
     "sourceType": "module"
   },
   "rules": {
-    "no-multiple-empty-lines":"warn",
+    "no-multiple-empty-lines": "warn",
     "semi": ["error", "never"],
     "quotes": ["error", "single"],
     "@typescript-eslint/explicit-function-return-type": "off",
     "@typescript-eslint/no-explicit-any": 0,
     "@typescript-eslint/no-inferrable-types": [
-      "warn", {
+      "warn",
+      {
         "ignoreParameters": true
       }
     ],
@@ -23,7 +24,14 @@
     "space-in-parens": ["error", "never"],
     "keyword-spacing": "warn",
     "no-whitespace-before-property": "error",
-    "no-trailing-spaces":"error",
-    "no-multi-spaces": "warn"
+    "no-trailing-spaces": "error",
+    "no-multi-spaces": "warn",
+    "indent": [
+      "error",
+      4,
+      {
+        "SwitchCase": 1
+      }
+    ]
   }
 }
