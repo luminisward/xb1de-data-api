@@ -45,4 +45,14 @@ export abstract class BaseParser {
         this.msTable = this.table.split('.').map(s => s + '_ms').join('.')
     }
 
+    protected async overrideDataX(resultRow: any): Promise<void> {
+        try {
+            const data = await import(`../dataX/${this.table}`)
+            Object.assign(resultRow, data[resultRow.row_id])
+        } catch (e) {
+            console.log(e.message)
+        }
+
+    }
+
 }

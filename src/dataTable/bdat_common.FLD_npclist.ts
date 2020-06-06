@@ -47,6 +47,7 @@ export interface TableWithText extends TableType {
     mob_name: any
     rlt_job: any
     exc_talk_id: any
+    present: any
 }
 
 export default class Bdat_qtMNU_qt extends BaseParser {
@@ -67,9 +68,6 @@ export default class Bdat_qtMNU_qt extends BaseParser {
         const lndParser = await getParser('bdat_common.landmarklist', this.language)
         result.rlt_lnd = row.rlt_lnd > 0 ? await lndParser.parseOne(row.rlt_lnd) : null
 
-        const itemParser = await getParser('bdat_common.ITM_itemlist', this.language)
-        result.present = row.present > 0 ? await itemParser.parseOne(row.present) : null
-
 
         // exchange
         if (row.exc_map_id > 0) {
@@ -86,14 +84,20 @@ export default class Bdat_qtMNU_qt extends BaseParser {
             }
 
             const extalkParser = await getParser(`bdat_${exchangeMapId}.extalklist${MapId[0]}`, this.language)
-            result.exc_talk_id = row.exc_talk_id > 0 ? await extalkParser.parseOne(row.exc_talk_id) : null
+            result.exc_talk_id = await extalkParser.parseOne(row.exc_talk_id)
+
+            const itemParser = await getParser('bdat_common.ITM_itemlist', this.language)
+            result.present = await itemParser.parseOne(row.present)
         } else {
             for (let i = 1; i <= 5; i++) {
                 const k = `exc_id${i}`
                 result[k] = null
             }
             result.exc_talk_id = null
+            result.present = null
         }
+
+        this.overrideDataX(result)
 
         return result
 

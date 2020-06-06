@@ -205,6 +205,8 @@ export default class QuestParser extends BaseParser {
             const menuParser = await getParser(`bdat_qt${mapid}.MNU_qt${mapid}`, this.language)
             result.menu = await menuParser.parseOne(row_id)
         }
+
+        this.overrideDataX(result)
         return result
 
     }
