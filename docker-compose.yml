@@ -7,4 +7,4 @@ services:
     volumes:
       - ".:/app"
     working_dir: /app
-    entrypoint: node dist/index.js
+    entrypoint: npm run serve
