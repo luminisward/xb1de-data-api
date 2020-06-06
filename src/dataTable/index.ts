@@ -47,7 +47,7 @@ export abstract class BaseParser {
 
     protected async overrideDataX(resultRow: any): Promise<void> {
         try {
-            const data = await import(`../dataX/${this.table}`)
+            const data = await import(`../../dataX/${this.table}`)
             Object.assign(resultRow, data[resultRow.row_id])
         } catch (e) {
             console.log(e.message)
