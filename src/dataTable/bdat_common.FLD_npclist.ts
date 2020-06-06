@@ -71,20 +71,29 @@ export default class Bdat_qtMNU_qt extends BaseParser {
         result.present = row.present > 0 ? await itemParser.parseOne(row.present) : null
 
 
-        const mapIdParser = await getParser('bdat_common.FLD_maplist', this.language)
-        const {id_name: exchangeMapId} = await mapIdParser.parseOne(row.exc_map_id)
+        // exchange
+        if (row.exc_map_id > 0) {
+            const mapIdParser = await getParser('bdat_common.FLD_maplist', this.language)
+            const {id_name: exchangeMapId} = await mapIdParser.parseOne(row.exc_map_id)
 
-        const MapId: any = /\d{4}/.exec(exchangeMapId)
-        const mapTable = `bdat_${exchangeMapId}.exchangelist${MapId[0]}`
-        const exchangeParser = await getParser(mapTable, this.language)
+            const MapId: any = /\d{4}/.exec(exchangeMapId)
+            const mapTable = `bdat_${exchangeMapId}.exchangelist${MapId[0]}`
+            const exchangeParser = await getParser(mapTable, this.language)
 
-        for (let i = 1; i <= 5; i++) {
-            const k = `exc_id${i}`
-            result[k] = row[k] > 0 ? await exchangeParser.parseOne(row[k]) : null
+            for (let i = 1; i <= 5; i++) {
+                const k = `exc_id${i}`
+                result[k] = row[k] > 0 ? await exchangeParser.parseOne(row[k]) : null
+            }
+
+            const extalkParser = await getParser(`bdat_${exchangeMapId}.extalklist${MapId[0]}`, this.language)
+            result.exc_talk_id = row.exc_talk_id > 0 ? await extalkParser.parseOne(row.exc_talk_id) : null
+        } else {
+            for (let i = 1; i <= 5; i++) {
+                const k = `exc_id${i}`
+                result[k] = null
+            }
+            result.exc_talk_id = null
         }
-
-        const extalkParser = await getParser(`bdat_${exchangeMapId}.extalklist${MapId[0]}`, this.language)
-        result.exc_talk_id = row.exc_talk_id > 0 ? await extalkParser.parseOne(row.exc_talk_id) : null
 
         return result
 
