@@ -1,4 +1,203 @@
 {
+  "102":{
+    "range_s": 6,
+    "range_e": 15
+  },
+  "103":{
+    "range_s": 9,
+    "range_e": 15
+  },
+  "104":{
+    "range_s": 9,
+    "range_e": 15
+  },
+  "105":{
+    "range_s": 6,
+    "range_e": 15
+  },
+  "106":{
+    "range_s": 6,
+    "range_e": 15
+  },
+  "107":{
+    "range_s": 18,
+    "range_e": 0
+  },
+  "108":{
+    "range_s": 6,
+    "range_e": 12
+  },
+  "109":{
+    "range_s": 6,
+    "range_e": 15
+  },
+  "110":{
+    "range_s": 18,
+    "range_e": 3
+  },
+  "111":{
+    "range_s": 9,
+    "range_e": 15
+  },
+  "112":{
+    "range_s": 6,
+    "range_e": 15
+  },
+  "113":{
+    "notes": "全天 商业区弄堂里偷懒，完成 小姑娘队长的委托 后回军事区"
+  },
+  "114":{
+    "range_s": 6,
+    "range_e": 15
+  },
+  "115":{
+    "range_s": 6,
+    "range_e": 15
+  },
+  "116":{
+    "range_s": 18,
+    "range_e": 3
+  },
+  "117":{
+    "range_s": 18,
+    "range_e": 3
+  },
+  "118":{
+    "range_s": 18,
+    "range_e": 3
+  },
+  "119":{
+    "range_s": 6,
+    "range_e": 12
+  },
+  "120":{
+    "range_s": 18,
+    "range_e": 3
+  },
+  "121":{
+    "range_s": 18,
+    "range_e": 3
+  },
+  "122":{
+    "range_s": 6,
+    "range_e": 15
+  },
+  "123":{
+    "range_s": 18,
+    "range_e": 3
+  },
+  "124":{
+    "range_s": 9,
+    "range_e": 15
+  },
+  "125":{
+    "range_s": 9,
+    "range_e": 15
+  },
+  "126":{
+    "range_s": 9,
+    "range_e": 15
+  },
+  "127":{
+    "range_s": 18,
+    "range_e": 3
+  },
+  "128":{
+    "range_s": 9,
+    "range_e": 15
+  },
+  "129":{
+    "range_s": 6,
+    "range_e": 12
+  },
+  "130":{
+    "range_s": 6,
+    "range_e": 15
+  },
+  "131":{
+    "range_s": 6,
+    "range_e": 15
+  },
+  "132":{
+    "range_s": 9,
+    "range_e": 15
+  },
+  "133":{
+    "range_s": 6,
+    "range_e": 15
+  },
+  "134":{
+    "range_s": 21,
+    "range_e": 15
+  },
+  "135":{
+    "range_s": 21,
+    "range_e": 3
+  },
+  "136":{
+    "range_s": 18,
+    "range_e": 0
+  },
+  "137":{
+    "range_s": 18,
+    "range_e": 3
+  },
+  "138":{
+    "range_s": 18,
+    "range_e": 3
+  },
+  "139":{
+    "range_s": 21,
+    "range_e": 3
+  },
+  "140":{
+    "range_s": 18,
+    "range_e": 3
+  },
+  "141":{
+    "range_s": 21,
+    "range_e": 3
+  },
+  "142":{
+    "range_s": 18,
+    "range_e": 3
+  },
+  "143":{
+    "range_s": 18,
+    "range_e": 3
+  },
+  "144":{
+    "range_s": 18,
+    "range_e": 3
+  },
+  "145":{
+    "range_s": 18,
+    "range_e": 3
+  },
+  "168":{
+    "range_s": 6,
+    "range_e": 18
+  },
+  "169":{
+    "range_s": 6,
+    "range_e": 18
+  },
+  "196":{
+    "range_s": 18,
+    "range_e": 6
+  },
+  "200":{
+    "range_s": 18,
+    "range_e": 6
+  },
+  "202":{
+    "range_s": 18,
+    "range_e": 6
+  },
+  "210":{
+    "range_s": 18,
+    "range_e": 6
+  },
   "255":{
     "range_s": 6,
     "range_e": 18
