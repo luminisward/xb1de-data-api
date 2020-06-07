@@ -198,8 +198,64 @@
     "range_s": 18,
     "range_e": 6
   },
+  "219":{
+    "range_s": 6,
+    "range_e": 6
+  },
+  "289":{
+    "range_s": 6,
+    "range_e": 18
+  },
+  "291":{
+    "range_s": 6,
+    "range_e": 18
+  },
+  "293":{
+    "range_s": 6,
+    "range_e": 18
+  },
   "255":{
     "range_s": 6,
     "range_e": 18
+  },
+  "280":{
+    "range_s": 6,
+    "range_e": 15
+  },
+  "283":{
+    "range_s": 6,
+    "range_e": 15
+  },
+  "286":{
+    "range_s": 6,
+    "range_e": 15
+  },
+  "294":{
+    "range_s": 6,
+    "range_e": 18
+  },
+  "780":{
+    "range_s": 6,
+    "range_e": 6
+  },
+  "781":{
+    "range_s": 6,
+    "range_e": 6
+  },
+  "783":{
+    "range_s": 6,
+    "range_e": 6
+  },
+  "784":{
+    "range_s": 6,
+    "range_e": 6
+  },
+  "786":{
+    "range_s": 6,
+    "range_e": 6
+  },
+  "840":{
+    "range_s": 6,
+    "range_e": 6
   }
 }
