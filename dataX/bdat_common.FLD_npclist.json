@@ -250,6 +250,94 @@
     "range_s": 6,
     "range_e": 18
   },
+  "307":{
+    "range_s": 18,
+    "range_e": 3
+  },
+  "308":{
+    "range_s": 6,
+    "range_e": 12
+  },
+  "309":{
+    "range_s": 6,
+    "range_e": 12
+  },
+  "313":{
+    "range_s": 3,
+    "range_e": 12
+  },
+  "315":{
+    "range_s": 18,
+    "range_e": 3
+  },
+  "316":{
+    "range_s": 15,
+    "range_e": 0
+  },
+  "317":{
+    "range_s": 18,
+    "range_e": 3
+  },
+  "318":{
+    "range_s": 18,
+    "range_e": 3
+  },
+  "319":{
+    "range_s": 18,
+    "range_e": 3
+  },
+  "321":{
+    "range_s": 6,
+    "range_e": 15
+  },
+  "322":{
+    "range_s": 18,
+    "range_e": 0
+  },
+  "324":{
+    "range_s": 6,
+    "range_e": 15
+  },
+  "325":{
+    "range_s": 6,
+    "range_e": 15
+  },
+  "326":{
+    "range_s": 6,
+    "range_e": 15
+  },
+  "327":{
+    "range_s": 6,
+    "range_e": 15
+  },
+  "329":{
+    "range_s": 6,
+    "range_e": 15
+  },
+  "330":{
+    "range_s": 6,
+    "range_e": 15
+  },
+  "331":{
+    "range_s": 18,
+    "range_e": 3
+  },
+  "332":{
+    "range_s": 15,
+    "range_e": 0
+  },
+  "333":{
+    "range_s": 15,
+    "range_e": 0
+  },
+  "334":{
+    "range_s": 3,
+    "range_e": 18
+  },
+  "335":{
+    "range_s": 6,
+    "range_e": 15
+  },
   "432":{
     "range_s": 18,
     "range_e": 3
@@ -265,6 +353,10 @@
   "435":{
     "range_s": 18,
     "range_e": 3
+  },
+  "436":{
+    "range_s": 6,
+    "range_e": 15
   },
   "437":{
     "range_s": 18,
@@ -374,6 +466,14 @@
   "465":{
     "range_s": 6,
     "range_e": 15
+  },
+  "467":{
+    "range_s": 9,
+    "range_e": 15
+  },
+  "472":{
+    "range_s": 18,
+    "range_e": 3
   },
   "479":{
     "range_s": 18,
@@ -643,6 +743,30 @@
     "range_s": 6,
     "range_e": 15
   },
+  "748":{
+    "range_s": 18,
+    "range_e": 3
+  },
+  "750":{
+    "range_s": 18,
+    "range_e": 3
+  },
+  "751":{
+    "range_s": 6,
+    "range_e": 15
+  },
+  "761":{
+    "range_s": 18,
+    "range_e": 3
+  },
+  "762":{
+    "range_s": 18,
+    "range_e": 3
+  },
+  "763":{
+    "range_s": 18,
+    "range_e": 3
+  },
   "780":{
     "range_s": 6,
     "range_e": 6
@@ -700,6 +824,18 @@
     "range_e": 6
   },
   "878":{
+    "range_s": 6,
+    "range_e": 6
+  },
+  "916":{
+    "range_s": 6,
+    "range_e": 6
+  },
+  "917":{
+    "range_s": 6,
+    "range_e": 6
+  },
+  "922":{
     "range_s": 6,
     "range_e": 6
   }
