@@ -1,5 +1,5 @@
 import _ from 'lodash'
-import {BaseParser, BaseFields, getParser} from './index'
+import {BaseParser, BaseFields, getParser, text2html} from './index'
 
 enum ItemType {
     武器 = 2,
@@ -102,7 +102,7 @@ export default class Bdat_qtMNU_qt extends BaseParser {
                 mesParser = await getParser('bdat_menu_item.MNU_item_mes_b', this.language)
             }
             const mes = await mesParser.parseOne(row.comment)
-            result.comment = mes.comment
+            result.comment = text2html(mes.comment)
 
         } else {
             result.comment = ''

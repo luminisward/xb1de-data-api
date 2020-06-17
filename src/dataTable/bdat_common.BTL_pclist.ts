@@ -68,32 +68,27 @@ export default class extends BaseParser {
         const row = await this.db.getDataTableRow<TableType>({table: this.table, row_id})
         const result: TableWithText = _.clone(row)
 
-
         result.name = await this.db.getMsSingle({table: this.msTable, row_id: row.name, language: this.language})
 
-        const itmParser = await getParser('bdat_common.ITM_itemlist', this.language)
-
-        for (const key of [
-            'def_wpn',
-            'def_head',
-            'def_body',
-            'def_arm',
-            'def_waist',
-            'def_legg',
-            'melia_def_wpn',
-            'melia_def_head',
-            'melia_def_body',
-            'melia_def_arm',
-            'melia_def_waist',
-            'melia_def_legg'
-        ]) {
-            console.log(row[key])
-            result[key] = await itmParser.parseOne(row[key])
-        }
-
-
-        // newRow.rlt_job = await this.db.getMsSingle({table: this.msTable, row_id: row.rlt_job, language: this.language})
-        // console.log(newRow)
+        // {
+        //     const itmParser = await getParser('bdat_common.ITM_itemlist', this.language)
+        //     for (const key of [
+        //         'def_wpn',
+        //         'def_head',
+        //         'def_body',
+        //         'def_arm',
+        //         'def_waist',
+        //         'def_legg',
+        //         'melia_def_wpn',
+        //         'melia_def_head',
+        //         'melia_def_body',
+        //         'melia_def_arm',
+        //         'melia_def_waist',
+        //         'melia_def_legg'
+        //     ]) {
+        //         result[key] = await itmParser.parseOne(row[key])
+        //     }
+        // }
 
         return result
 

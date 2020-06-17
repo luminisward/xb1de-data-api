@@ -1,5 +1,5 @@
 import _ from 'lodash'
-import {BaseParser, BaseFields} from './index'
+import {BaseParser, BaseFields, text2html} from './index'
 
 export interface TableType extends BaseFields {
     'name': string,
@@ -52,9 +52,7 @@ export default class Bdat_qtMNU_qt extends BaseParser {
 
 
         result.name = await this.db.getMsSingle({table: this.msTable, row_id: row.name, language: this.language})
-        result.rvs_caption = await this.db.getMsSingle({table: this.msTable, row_id: row.rvs_caption, language: this.language})
-        // newRow.rlt_job = await this.db.getMsSingle({table: this.msTable, row_id: row.rlt_job, language: this.language})
-        // console.log(newRow)
+        result.rvs_caption = text2html(await this.db.getMsSingle({table: this.msTable, row_id: row.rvs_caption, language: this.language}))
 
         return result
 

@@ -54,5 +54,11 @@ export abstract class BaseParser {
         }
 
     }
+}
 
+export const text2html = (text: string): string => {
+    text = text.replace(/\[XENO:n \]\n/g, '<br />')
+    text = text.replace(/\[System:Color name=item \]/g, '')
+    text = text.replace(/\[\/System:Color\]/g, '')
+    return text
 }

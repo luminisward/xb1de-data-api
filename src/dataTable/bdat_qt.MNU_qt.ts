@@ -1,4 +1,4 @@
-import {BaseParser, BaseFields} from './index'
+import {BaseParser, BaseFields, text2html} from './index'
 
 export interface TableType extends BaseFields {
     purpose: number,
@@ -62,7 +62,7 @@ export default class extends BaseParser {
         for (const field of fields) {
             const row_id = (row[field] ? row[field] : 0) as number
             const text = await this.db.getMsSingle({table: this.msTable, row_id})
-            newRow[field] = text
+            newRow[field] = text2html(text)
         }
         return newRow
 

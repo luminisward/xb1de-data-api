@@ -21,9 +21,18 @@ export interface TableType extends BaseFields {
 export interface TableWithText extends TableType {
     name: any
     jwl_skill1: any
+    pc: any[]
 
     [key: string]: any
 
+}
+
+enum PartsTable {
+    ITM_headlist = 1,
+    ITM_bodylist,
+    ITM_armlist,
+    ITM_waistlist,
+    ITM_legglist
 }
 
 export default class Bdat_qtMNU_qt extends BaseParser {
@@ -47,6 +56,20 @@ export default class Bdat_qtMNU_qt extends BaseParser {
         } else {
             result.jwl_skill1 = null
         }
+
+
+        await this.overrideDataX(result) // 修正Attack V parts等数据错误
+        const ITM_partslist = await getParser(`bdat_common.${PartsTable[result.parts]}`, this.language)
+
+        result.pc = await Promise.all(
+            row.pc.map(async partsId => {
+                if (partsId > 0) {
+                    const parts = await ITM_partslist.parseOne(partsId)
+                    return parts
+                }
+                return null
+            })
+        )
 
         return result
 

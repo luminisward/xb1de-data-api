@@ -75,6 +75,7 @@ export interface TableType extends BaseFields {
 
 export interface TableWithText extends TableType {
     name: any
+    style: any
 
     [key: string]: any
 
@@ -92,7 +93,6 @@ export default class Bdat_qtMNU_qt extends BaseParser {
 
         result.name = await this.db.getMsSingle({table: this.msTable, row_id: row.name, language: this.language})
 
-
         // arts11 ~ arts38
         const pc_arts = await getParser('bdat_common.pc_arts', this.language)
         for (let i = 1; i <= 3; i++) {
@@ -107,8 +107,25 @@ export default class Bdat_qtMNU_qt extends BaseParser {
             }
         }
 
-        // newRow.rlt_job = await this.db.getMsSingle({table: this.msTable, row_id: row.rlt_job, language: this.language})
-        // console.log(newRow)
+
+        {
+
+            let charaId = 0
+            for (let i = 1; i <= 16; i++) {
+                if (row[`equip_pc${i}`] === 1){
+                    charaId = i
+                    break
+                }
+            }
+
+            if (charaId > 0 && row.style > 0) {
+                const MNU_StyleArmorPc = await getParser(`bdat_common.MNU_StyleWeaponPc${charaId.toString().padStart(2, '0')}`, this.language)
+                result.style = await MNU_StyleArmorPc.parseOne(row.style)
+            } else {
+                result.style = null
+            }
+        }
+
 
         return result
 

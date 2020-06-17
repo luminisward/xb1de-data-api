@@ -97,7 +97,7 @@ export default class Bdat_qtMNU_qt extends BaseParser {
             result.present = null
         }
 
-        this.overrideDataX(result)
+        await this.overrideDataX(result)
 
         return result
 

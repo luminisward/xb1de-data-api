@@ -206,7 +206,7 @@ export default class QuestParser extends BaseParser {
             result.menu = await menuParser.parseOne(row_id)
         }
 
-        this.overrideDataX(result)
+        await this.overrideDataX(result)
         return result
 
     }
