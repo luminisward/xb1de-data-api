@@ -21,18 +21,26 @@ export interface TableType extends BaseFields {
 export interface TableWithText extends TableType {
     name: any
     jwl_skill1: any
-    pc: any[]
-
+    arm_type: any
     [key: string]: any
 
 }
 
-enum PartsTable {
-    ITM_headlist = 1,
-    ITM_bodylist,
-    ITM_armlist,
-    ITM_waistlist,
-    ITM_legglist
+enum ArmType {
+    未装备,
+    轻型装备,
+    中型装备,
+    重型装备,
+    加农炮浮翼Ⅰ,
+    机界装备_枪击浮翼Ⅰ,
+    机界装备_剑刃浮翼Ⅰ,
+    机界装备_护盾浮翼Ⅰ,
+    机界装备_加农炮浮翼Ⅱ,
+    机界装备_枪击浮翼Ⅱ,
+    机界装备_剑刃浮翼Ⅱ,
+    机界装备_护盾浮翼Ⅱ,
+    机界装备_剑刃浮翼Ⅹ,
+    机界装备
 }
 
 export default class Bdat_qtMNU_qt extends BaseParser {
@@ -57,19 +65,7 @@ export default class Bdat_qtMNU_qt extends BaseParser {
             result.jwl_skill1 = null
         }
 
-
-        await this.overrideDataX(result) // 修正Attack V parts等数据错误
-        const ITM_partslist = await getParser(`bdat_common.${PartsTable[result.parts]}`, this.language)
-
-        result.pc = await Promise.all(
-            row.pc.map(async partsId => {
-                if (partsId > 0) {
-                    const parts = await ITM_partslist.parseOne(partsId)
-                    return parts
-                }
-                return null
-            })
-        )
+        result.arm_type = ArmType[row.arm_type]
 
         return result
 

@@ -93,23 +93,23 @@ export default class Bdat_qtMNU_qt extends BaseParser {
 
         result.name = await this.db.getMsSingle({table: this.msTable, row_id: row.name, language: this.language})
 
-        // arts11 ~ arts38
-        const pc_arts = await getParser('bdat_common.pc_arts', this.language)
-        for (let i = 1; i <= 3; i++) {
-            for (let j = 1; j <= 8; j++) {
-                const key = `arts${i}${j}`
-                if (row[key] > 0) {
-                    const arts: PcArtsType = await pc_arts.parseOne(row[key])
-                    result[key] = arts
-                } else {
-                    result[key] = null
-                }
-            }
-        }
-
+        // {
+        //     // arts11 ~ arts38
+        //     const pc_arts = await getParser('bdat_common.pc_arts', this.language)
+        //     for (let i = 1; i <= 3; i++) {
+        //         for (let j = 1; j <= 8; j++) {
+        //             const key = `arts${i}${j}`
+        //             if (row[key] > 0) {
+        //                 const arts: PcArtsType = await pc_arts.parseOne(row[key])
+        //                 result[key] = arts
+        //             } else {
+        //                 result[key] = null
+        //             }
+        //         }
+        //     }
+        // }
 
         {
-
             let charaId = 0
             for (let i = 1; i <= 16; i++) {
                 if (row[`equip_pc${i}`] === 1){
@@ -124,6 +124,20 @@ export default class Bdat_qtMNU_qt extends BaseParser {
             } else {
                 result.style = null
             }
+
+            if (charaId > 0) {
+                const BTL_pclist = await getParser('bdat_common.BTL_pclist', this.language)
+                result.pcid = await BTL_pclist.parseOne(charaId)
+            } else {
+                result.pcid = null
+            }
+        }
+
+        if (row.uni_flag > 0) {
+            const itmParser = await getParser('bdat_common.ITM_itemlist', this.language)
+            result.jwl_skill1 = row.jwl_skill1 > 0 ? await itmParser.parseOne(row.jwl_skill1) : null
+            result.jwl_skill2 = row.jwl_skill2 > 0 ? await itmParser.parseOne(row.jwl_skill2) : null
+            result.jwl_skill3 = row.jwl_skill3 > 0 ? await itmParser.parseOne(row.jwl_skill3) : null
         }
 
 

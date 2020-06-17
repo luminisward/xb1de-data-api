@@ -91,6 +91,30 @@ export default class Bdat_qtMNU_qt extends BaseParser {
         }
         const itemParser = await getParser(itemTable, this.language)
         const itemData = await itemParser.parseOne(row.itemID)
+
+        // 装备幻化，ITM_equiplist不含装备种类数据，需要在这里拿到种类
+        if (itemTable === 'bdat_common.ITM_equiplist') {
+            enum PartsTable {
+                ITM_headlist = ItemType.头部防具,
+                ITM_bodylist = ItemType.身体防具,
+                ITM_armlist = ItemType.手臂防具,
+                ITM_waistlist = ItemType.腰部防具,
+                ITM_legglist = ItemType.腿部防具
+            }
+
+            const ITM_partslist = await getParser(`bdat_common.${PartsTable[row.itemType]}`, this.language)
+
+            itemData.pc = await Promise.all(
+                [...itemData.pc.splice(0, 8), ...itemData.pc.splice(13, 2)].map(async (partsId: number) => {
+                    if (partsId > 0) {
+                        const parts = await ITM_partslist.parseOne(partsId)
+                        return parts
+                    }
+                    return null
+                })
+            )
+        }
+
         result.itemID = itemData
 
 
