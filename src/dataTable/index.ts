@@ -57,8 +57,17 @@ export abstract class BaseParser {
 }
 
 export const text2html = (text: string): string => {
-    text = text.replace(/\[XENO:n \]\n/g, '<br />')
-    text = text.replace(/\[System:Color name=item \]/g, '')
-    text = text.replace(/\[\/System:Color\]/g, '')
+    const replacePattern: [RegExp, string][] = [
+        [/\[XENO:n \]\n/g, '<br />'],
+        [/\[System:Color name=item \]/g, ''],
+        [/\[\/System:Color\]/g, ''],
+        [/\[XENO:del del=this \]/g, ''],
+        [/\[XENO:wait wait=key \]/g, ''],
+        [/\[System:PageBreak \]/g, '<br />'],
+        [/\[XENO:line \]/g, '──'],
+    ]
+    for (const [searchValue, replaceValue] of replacePattern) {
+        text = text.replace(searchValue, replaceValue)
+    }
     return text
 }
