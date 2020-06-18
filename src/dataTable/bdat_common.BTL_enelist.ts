@@ -1,5 +1,5 @@
 import _ from 'lodash'
-import {BaseParser, BaseFields} from './index'
+import {BaseParser, BaseFields, getParser} from './index'
 
 export interface TableType extends BaseFields {
     'name': number,
@@ -28,7 +28,10 @@ export default class extends BaseParser {
 
         result.name = await this.db.getMsSingle({table: this.msTable, row_id: row.name, language: this.language})
 
-        return result
+        const bdat_ma = await getParser('bdat_ma.BTL_enelist', this.language)
+        const data = await bdat_ma.parseOne(row_id)
+
+        return {...result, ...data}
 
     }
 }
