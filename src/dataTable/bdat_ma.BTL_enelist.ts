@@ -101,8 +101,17 @@ export default class extends BaseParser {
             result[arts] = row[arts] > 0 ? await ene_arts.parseOne(row[arts]) : null
         }
 
+        result.mapID = await this.getMap(row_id)
+
         return result
 
+    }
+
+    async getMap(id: number): Promise<any> {
+        const mapNumber = getTableSuffix(id)
+        const FLD_maplist = await getParser('bdat_common.FLD_maplist', this.language)
+        const mapID = await FLD_maplist.parseOne(ma(mapNumber))
+        return mapID
     }
 }
 
@@ -148,4 +157,56 @@ function getTableSuffix(id: number): string {
     if (id > 200) return '0301'
     if (id > 100) return '0201'
     return '0101'
+}
+
+function ma(id: string): number {
+    switch (id) {
+        case '0000': return 1
+        case '0101': return 2
+        case '0201': return 3
+        case '0301': return 4
+        case '0401': return 5
+        case '0402': return 6
+        case '0501': return 7
+        case '0601': return 8
+        case '0701': return 9
+        case '0801': return 10
+        case '0901': return 11
+        case '1001': return 12
+        case '1101': return 13
+        case '1201': return 14
+        case '1202': return 15
+        case '1301': return 16
+        case '1401': return 17
+        case '1501': return 18
+        case '1601': return 19
+        case '1602': return 20
+        case '1701': return 21
+        case '1801': return 22
+        case '1901': return 23
+        case '2001': return 24
+        case '2101': return 25
+        case '2201': return 26
+        case '2301': return 27
+        case '2401': return 28
+        case '2501': return 29
+        case '2601': return 30
+        case '0102': return 31
+        case '5001': return 32
+        case '5101': return 33
+        case '2701': return 34
+        case '5201': return 35
+        case '5301': return 36
+        case '5401': return 37
+        case '5501': return 38
+        case '5601': return 39
+        case '5701': return 40
+        case '5801': return 41
+        case '5901': return 42
+        case '9990': return 43
+        case '2801': return 44
+        case '2901': return 45
+        case '6001': return 46
+    }
+    return 0
 }
