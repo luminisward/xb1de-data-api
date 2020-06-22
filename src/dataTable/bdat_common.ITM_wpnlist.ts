@@ -140,6 +140,7 @@ export default class Bdat_qtMNU_qt extends BaseParser {
             result.jwl_skill3 = row.jwl_skill3 > 0 ? await itmParser.parseOne(row.jwl_skill3) : null
         }
 
+        result.jwl_slot_max = row.jwl_slot
         this.overrideDataX(result)
 
         return result

@@ -1,0 +1,858 @@
+{
+  "87": {
+    "jwl_slot_max": "1"
+  },
+  "89": {
+    "jwl_slot_max": "1"
+  },
+  "125": {
+    "jwl_slot_max": "1"
+  },
+  "126": {
+    "jwl_slot_max": "1"
+  },
+  "127": {
+    "jwl_slot_max": "1"
+  },
+  "128": {
+    "jwl_slot_max": "1"
+  },
+  "129": {
+    "jwl_slot_max": "1"
+  },
+  "130": {
+    "jwl_slot_max": "1"
+  },
+  "131": {
+    "jwl_slot_max": "1"
+  },
+  "132": {
+    "jwl_slot_max": "1"
+  },
+  "133": {
+    "jwl_slot_max": "1"
+  },
+  "134": {
+    "jwl_slot_max": "1"
+  },
+  "135": {
+    "jwl_slot_max": "1"
+  },
+  "140": {
+    "jwl_slot_max": "1"
+  },
+  "141": {
+    "jwl_slot_max": "1"
+  },
+  "142": {
+    "jwl_slot_max": "1"
+  },
+  "143": {
+    "jwl_slot_max": "1"
+  },
+  "144": {
+    "jwl_slot_max": "1"
+  },
+  "145": {
+    "jwl_slot_max": "1"
+  },
+  "146": {
+    "jwl_slot_max": "1"
+  },
+  "147": {
+    "jwl_slot_max": "1"
+  },
+  "148": {
+    "jwl_slot_max": "1"
+  },
+  "149": {
+    "jwl_slot_max": "1"
+  },
+  "150": {
+    "jwl_slot_max": "1"
+  },
+  "156": {
+    "jwl_slot_max": "1"
+  },
+  "157": {
+    "jwl_slot_max": "1"
+  },
+  "158": {
+    "jwl_slot_max": "1"
+  },
+  "159": {
+    "jwl_slot_max": "1"
+  },
+  "160": {
+    "jwl_slot_max": "1"
+  },
+  "161": {
+    "jwl_slot_max": "1"
+  },
+  "162": {
+    "jwl_slot_max": "1"
+  },
+  "163": {
+    "jwl_slot_max": "1"
+  },
+  "164": {
+    "jwl_slot_max": "1"
+  },
+  "180": {
+    "jwl_slot_max": "1"
+  },
+  "187": {
+    "jwl_slot_max": "1"
+  },
+  "188": {
+    "jwl_slot_max": "1"
+  },
+  "189": {
+    "jwl_slot_max": "1"
+  },
+  "190": {
+    "jwl_slot_max": "1"
+  },
+  "216": {
+    "jwl_slot_max": "1"
+  },
+  "217": {
+    "jwl_slot_max": "1"
+  },
+  "218": {
+    "jwl_slot_max": "1"
+  },
+  "219": {
+    "jwl_slot_max": "1"
+  },
+  "220": {
+    "jwl_slot_max": "0"
+  },
+  "221": {
+    "jwl_slot_max": "0"
+  },
+  "222": {
+    "jwl_slot_max": "1"
+  },
+  "223": {
+    "jwl_slot_max": "0"
+  },
+  "224": {
+    "jwl_slot_max": "1"
+  },
+  "225": {
+    "jwl_slot_max": "0"
+  },
+  "226": {
+    "jwl_slot_max": "1"
+  },
+  "227": {
+    "jwl_slot_max": "1"
+  },
+  "228": {
+    "jwl_slot_max": "1"
+  },
+  "229": {
+    "jwl_slot_max": "1"
+  },
+  "230": {
+    "jwl_slot_max": "1"
+  },
+  "231": {
+    "jwl_slot_max": "1"
+  },
+  "232": {
+    "jwl_slot_max": "0"
+  },
+  "233": {
+    "jwl_slot_max": "1"
+  },
+  "234": {
+    "jwl_slot_max": "1"
+  },
+  "235": {
+    "jwl_slot_max": "1"
+  },
+  "236": {
+    "jwl_slot_max": "1"
+  },
+  "237": {
+    "jwl_slot_max": "0"
+  },
+  "238": {
+    "jwl_slot_max": "1"
+  },
+  "239": {
+    "jwl_slot_max": "1"
+  },
+  "240": {
+    "jwl_slot_max": "1"
+  },
+  "241": {
+    "jwl_slot_max": "1"
+  },
+  "242": {
+    "jwl_slot_max": "1"
+  },
+  "243": {
+    "jwl_slot_max": "1"
+  },
+  "244": {
+    "jwl_slot_max": "1"
+  },
+  "245": {
+    "jwl_slot_max": "1"
+  },
+  "246": {
+    "jwl_slot_max": "1"
+  },
+  "247": {
+    "jwl_slot_max": "1"
+  },
+  "248": {
+    "jwl_slot_max": "1"
+  },
+  "249": {
+    "jwl_slot_max": "1"
+  },
+  "250": {
+    "jwl_slot_max": "1"
+  },
+  "256": {
+    "jwl_slot_max": "1"
+  },
+  "257": {
+    "jwl_slot_max": "1"
+  },
+  "258": {
+    "jwl_slot_max": "1"
+  },
+  "259": {
+    "jwl_slot_max": "1"
+  },
+  "260": {
+    "jwl_slot_max": "1"
+  },
+  "261": {
+    "jwl_slot_max": "0"
+  },
+  "262": {
+    "jwl_slot_max": "1"
+  },
+  "263": {
+    "jwl_slot_max": "0"
+  },
+  "264": {
+    "jwl_slot_max": "1"
+  },
+  "265": {
+    "jwl_slot_max": "0"
+  },
+  "271": {
+    "jwl_slot_max": "1"
+  },
+  "273": {
+    "jwl_slot_max": "1"
+  },
+  "275": {
+    "jwl_slot_max": "1"
+  },
+  "276": {
+    "jwl_slot_max": "0"
+  },
+  "277": {
+    "jwl_slot_max": "0"
+  },
+  "278": {
+    "jwl_slot_max": "1"
+  },
+  "279": {
+    "jwl_slot_max": "1"
+  },
+  "280": {
+    "jwl_slot_max": "1"
+  },
+  "281": {
+    "jwl_slot_max": "1"
+  },
+  "282": {
+    "jwl_slot_max": "1"
+  },
+  "283": {
+    "jwl_slot_max": "1"
+  },
+  "284": {
+    "jwl_slot_max": "1"
+  },
+  "285": {
+    "jwl_slot_max": "0"
+  },
+  "286": {
+    "jwl_slot_max": "1"
+  },
+  "287": {
+    "jwl_slot_max": "0"
+  },
+  "288": {
+    "jwl_slot_max": "1"
+  },
+  "289": {
+    "jwl_slot_max": "0"
+  },
+  "290": {
+    "jwl_slot_max": "1"
+  },
+  "295": {
+    "jwl_slot_max": "1"
+  },
+  "296": {
+    "jwl_slot_max": "0"
+  },
+  "297": {
+    "jwl_slot_max": "1"
+  },
+  "298": {
+    "jwl_slot_max": "0"
+  },
+  "299": {
+    "jwl_slot_max": "1"
+  },
+  "300": {
+    "jwl_slot_max": "0"
+  },
+  "303": {
+    "jwl_slot_max": "0"
+  },
+  "305": {
+    "jwl_slot_max": "0"
+  },
+  "306": {
+    "jwl_slot_max": "0"
+  },
+  "307": {
+    "jwl_slot_max": "0"
+  },
+  "308": {
+    "jwl_slot_max": "0"
+  },
+  "309": {
+    "jwl_slot_max": "1"
+  },
+  "310": {
+    "jwl_slot_max": "1"
+  },
+  "311": {
+    "jwl_slot_max": "1"
+  },
+  "312": {
+    "jwl_slot_max": "1"
+  },
+  "313": {
+    "jwl_slot_max": "1"
+  },
+  "314": {
+    "jwl_slot_max": "1"
+  },
+  "315": {
+    "jwl_slot_max": "1"
+  },
+  "316": {
+    "jwl_slot_max": "1"
+  },
+  "317": {
+    "jwl_slot_max": "1"
+  },
+  "318": {
+    "jwl_slot_max": "1"
+  },
+  "319": {
+    "jwl_slot_max": "1"
+  },
+  "320": {
+    "jwl_slot_max": "1"
+  },
+  "321": {
+    "jwl_slot_max": "1"
+  },
+  "322": {
+    "jwl_slot_max": "1"
+  },
+  "323": {
+    "jwl_slot_max": "1"
+  },
+  "324": {
+    "jwl_slot_max": "1"
+  },
+  "325": {
+    "jwl_slot_max": "1"
+  },
+  "326": {
+    "jwl_slot_max": "1"
+  },
+  "327": {
+    "jwl_slot_max": "1"
+  },
+  "328": {
+    "jwl_slot_max": "1"
+  },
+  "329": {
+    "jwl_slot_max": "1"
+  },
+  "330": {
+    "jwl_slot_max": "1"
+  },
+  "331": {
+    "jwl_slot_max": "1"
+  },
+  "332": {
+    "jwl_slot_max": "1"
+  },
+  "333": {
+    "jwl_slot_max": "1"
+  },
+  "334": {
+    "jwl_slot_max": "1"
+  },
+  "335": {
+    "jwl_slot_max": "1"
+  },
+  "336": {
+    "jwl_slot_max": "1"
+  },
+  "337": {
+    "jwl_slot_max": "1"
+  },
+  "338": {
+    "jwl_slot_max": "1"
+  },
+  "339": {
+    "jwl_slot_max": "1"
+  },
+  "340": {
+    "jwl_slot_max": "1"
+  },
+  "341": {
+    "jwl_slot_max": "1"
+  },
+  "343": {
+    "jwl_slot_max": "1"
+  },
+  "344": {
+    "jwl_slot_max": "1"
+  },
+  "345": {
+    "jwl_slot_max": "1"
+  },
+  "351": {
+    "jwl_slot_max": "1"
+  },
+  "352": {
+    "jwl_slot_max": "1"
+  },
+  "353": {
+    "jwl_slot_max": "1"
+  },
+  "354": {
+    "jwl_slot_max": "1"
+  },
+  "355": {
+    "jwl_slot_max": "1"
+  },
+  "356": {
+    "jwl_slot_max": "1"
+  },
+  "357": {
+    "jwl_slot_max": "0"
+  },
+  "359": {
+    "jwl_slot_max": "0"
+  },
+  "360": {
+    "jwl_slot_max": "1"
+  },
+  "361": {
+    "jwl_slot_max": "1"
+  },
+  "362": {
+    "jwl_slot_max": "1"
+  },
+  "363": {
+    "jwl_slot_max": "1"
+  },
+  "364": {
+    "jwl_slot_max": "1"
+  },
+  "365": {
+    "jwl_slot_max": "1"
+  },
+  "366": {
+    "jwl_slot_max": "1"
+  },
+  "367": {
+    "jwl_slot_max": "1"
+  },
+  "368": {
+    "jwl_slot_max": "1"
+  },
+  "369": {
+    "jwl_slot_max": "1"
+  },
+  "370": {
+    "jwl_slot_max": "1"
+  },
+  "371": {
+    "jwl_slot_max": "1"
+  },
+  "372": {
+    "jwl_slot_max": "1"
+  },
+  "373": {
+    "jwl_slot_max": "1"
+  },
+  "374": {
+    "jwl_slot_max": "1"
+  },
+  "375": {
+    "jwl_slot_max": "1"
+  },
+  "376": {
+    "jwl_slot_max": "0"
+  },
+  "377": {
+    "jwl_slot_max": "1"
+  },
+  "378": {
+    "jwl_slot_max": "1"
+  },
+  "379": {
+    "jwl_slot_max": "1"
+  },
+  "380": {
+    "jwl_slot_max": "1"
+  },
+  "381": {
+    "jwl_slot_max": "1"
+  },
+  "382": {
+    "jwl_slot_max": "1"
+  },
+  "383": {
+    "jwl_slot_max": "1"
+  },
+  "384": {
+    "jwl_slot_max": "1"
+  },
+  "385": {
+    "jwl_slot_max": "1"
+  },
+  "387": {
+    "jwl_slot_max": "0"
+  },
+  "389": {
+    "jwl_slot_max": "0"
+  },
+  "391": {
+    "jwl_slot_max": "1"
+  },
+  "392": {
+    "jwl_slot_max": "1"
+  },
+  "393": {
+    "jwl_slot_max": "1"
+  },
+  "394": {
+    "jwl_slot_max": "1"
+  },
+  "395": {
+    "jwl_slot_max": "1"
+  },
+  "396": {
+    "jwl_slot_max": "1"
+  },
+  "397": {
+    "jwl_slot_max": "1"
+  },
+  "398": {
+    "jwl_slot_max": "1"
+  },
+  "399": {
+    "jwl_slot_max": "1"
+  },
+  "400": {
+    "jwl_slot_max": "1"
+  },
+  "401": {
+    "jwl_slot_max": "0"
+  },
+  "402": {
+    "jwl_slot_max": "0"
+  },
+  "403": {
+    "jwl_slot_max": "0"
+  },
+  "404": {
+    "jwl_slot_max": "0"
+  },
+  "405": {
+    "jwl_slot_max": "0"
+  },
+  "406": {
+    "jwl_slot_max": "0"
+  },
+  "407": {
+    "jwl_slot_max": "1"
+  },
+  "408": {
+    "jwl_slot_max": "1"
+  },
+  "409": {
+    "jwl_slot_max": "1"
+  },
+  "410": {
+    "jwl_slot_max": "1"
+  },
+  "411": {
+    "jwl_slot_max": "1"
+  },
+  "412": {
+    "jwl_slot_max": "1"
+  },
+  "413": {
+    "jwl_slot_max": "1"
+  },
+  "414": {
+    "jwl_slot_max": "1"
+  },
+  "415": {
+    "jwl_slot_max": "1"
+  },
+  "416": {
+    "jwl_slot_max": "0"
+  },
+  "417": {
+    "jwl_slot_max": "0"
+  },
+  "418": {
+    "jwl_slot_max": "0"
+  },
+  "419": {
+    "jwl_slot_max": "1"
+  },
+  "420": {
+    "jwl_slot_max": "0"
+  },
+  "421": {
+    "jwl_slot_max": "1"
+  },
+  "422": {
+    "jwl_slot_max": "1"
+  },
+  "423": {
+    "jwl_slot_max": "1"
+  },
+  "424": {
+    "jwl_slot_max": "1"
+  },
+  "425": {
+    "jwl_slot_max": "1"
+  },
+  "426": {
+    "jwl_slot_max": "1"
+  },
+  "427": {
+    "jwl_slot_max": "1"
+  },
+  "428": {
+    "jwl_slot_max": "1"
+  },
+  "429": {
+    "jwl_slot_max": "1"
+  },
+  "430": {
+    "jwl_slot_max": "1"
+  },
+  "431": {
+    "jwl_slot_max": "1"
+  },
+  "432": {
+    "jwl_slot_max": "1"
+  },
+  "433": {
+    "jwl_slot_max": "1"
+  },
+  "434": {
+    "jwl_slot_max": "1"
+  },
+  "435": {
+    "jwl_slot_max": "1"
+  },
+  "436": {
+    "jwl_slot_max": "1"
+  },
+  "437": {
+    "jwl_slot_max": "1"
+  },
+  "438": {
+    "jwl_slot_max": "1"
+  },
+  "439": {
+    "jwl_slot_max": "1"
+  },
+  "440": {
+    "jwl_slot_max": "1"
+  },
+  "441": {
+    "jwl_slot_max": "1"
+  },
+  "442": {
+    "jwl_slot_max": "1"
+  },
+  "443": {
+    "jwl_slot_max": "1"
+  },
+  "444": {
+    "jwl_slot_max": "1"
+  },
+  "445": {
+    "jwl_slot_max": "1"
+  },
+  "446": {
+    "jwl_slot_max": "1"
+  },
+  "447": {
+    "jwl_slot_max": "1"
+  },
+  "448": {
+    "jwl_slot_max": "1"
+  },
+  "449": {
+    "jwl_slot_max": "1"
+  },
+  "450": {
+    "jwl_slot_max": "1"
+  },
+  "451": {
+    "jwl_slot_max": "1"
+  },
+  "452": {
+    "jwl_slot_max": "1"
+  },
+  "453": {
+    "jwl_slot_max": "1"
+  },
+  "454": {
+    "jwl_slot_max": "1"
+  },
+  "455": {
+    "jwl_slot_max": "1"
+  },
+  "456": {
+    "jwl_slot_max": "1"
+  },
+  "457": {
+    "jwl_slot_max": "1"
+  },
+  "458": {
+    "jwl_slot_max": "1"
+  },
+  "459": {
+    "jwl_slot_max": "1"
+  },
+  "460": {
+    "jwl_slot_max": "1"
+  },
+  "461": {
+    "jwl_slot_max": "0"
+  },
+  "462": {
+    "jwl_slot_max": "1"
+  },
+  "463": {
+    "jwl_slot_max": "0"
+  },
+  "464": {
+    "jwl_slot_max": "1"
+  },
+  "465": {
+    "jwl_slot_max": "0"
+  },
+  "466": {
+    "jwl_slot_max": "1"
+  },
+  "467": {
+    "jwl_slot_max": "1"
+  },
+  "468": {
+    "jwl_slot_max": "1"
+  },
+  "469": {
+    "jwl_slot_max": "1"
+  },
+  "470": {
+    "jwl_slot_max": "1"
+  },
+  "486": {
+    "jwl_slot_max": "1"
+  },
+  "487": {
+    "jwl_slot_max": "1"
+  },
+  "488": {
+    "jwl_slot_max": "1"
+  },
+  "489": {
+    "jwl_slot_max": "1"
+  },
+  "490": {
+    "jwl_slot_max": "1"
+  },
+  "506": {
+    "jwl_slot_max": "1"
+  },
+  "507": {
+    "jwl_slot_max": "1"
+  },
+  "508": {
+    "jwl_slot_max": "1"
+  },
+  "509": {
+    "jwl_slot_max": "1"
+  },
+  "510": {
+    "jwl_slot_max": "1"
+  },
+  "511": {
+    "jwl_slot_max": "1"
+  },
+  "512": {
+    "jwl_slot_max": "0"
+  },
+  "513": {
+    "jwl_slot_max": "1"
+  },
+  "514": {
+    "jwl_slot_max": "1"
+  },
+  "515": {
+    "jwl_slot_max": "0"
+  },
+  "525": {
+    "jwl_slot_max": "1"
+  },
+  "526": {
+    "jwl_slot_max": "1"
+  },
+  "527": {
+    "jwl_slot_max": "1"
+  },
+  "528": {
+    "jwl_slot_max": "1"
+  },
+  "529": {
+    "jwl_slot_max": "1"
+  },
+  "530": {
+    "jwl_slot_max": "1"
+  },
+  "": {}
+}

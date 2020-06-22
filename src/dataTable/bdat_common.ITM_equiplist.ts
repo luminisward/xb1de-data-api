@@ -67,6 +67,9 @@ export default class Bdat_qtMNU_qt extends BaseParser {
 
         result.arm_type = ArmType[row.arm_type]
 
+        result.jwl_slot_max = row.jwl_slot
+        this.overrideDataX(result)
+
         return result
 
     }
