@@ -105,7 +105,7 @@ export default class Bdat_qtMNU_qt extends BaseParser {
             const ITM_partslist = await getParser(`bdat_common.${PartsTable[row.itemType]}`, this.language)
 
             itemData.pc = await Promise.all(
-                [...itemData.pc.splice(0, 8), ...itemData.pc.splice(13, 2)].map(async (partsId: number) => {
+                [...itemData.pc.slice(0, 8), ...itemData.pc.slice(13, 15)].map(async (partsId: number) => {
                     if (partsId > 0) {
                         const parts = await ITM_partslist.parseOne(partsId)
                         return parts
