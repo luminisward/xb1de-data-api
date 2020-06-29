@@ -16,7 +16,7 @@ app.use(logger())
 interface RequestData {
     game: string
     table: string
-    row_id: number
+    row_id: number|undefined
     language: string
 }
 
@@ -28,8 +28,13 @@ app.use(async ctx => {
 
     if (game === 'xb1') {
         const parser = await getParser(table, language)
-        const result = await parser.parseOne(row_id)
-        ctx.body = result
+        if (row_id) {
+            const result = await parser.parseOne(row_id)
+            ctx.body = result
+        } else {
+            const result = await parser.parse()
+            ctx.body = result
+        }
     }
 
 
