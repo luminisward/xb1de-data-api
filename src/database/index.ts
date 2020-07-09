@@ -76,6 +76,21 @@ export class Db {
         }
     }
 
+    async getDataTableRowWhere<T>({table, field, value}: { table: string, field: string, value: string }): Promise<T> {
+        const client = await this.pool.connect()
+        try {
+            const text = `SELECT * FROM data."${table}" WHERE ${field} = $1`
+            const res = await client.query(text, [value])
+            if (res.rowCount !== 1) {
+                throw new Error(`Cannot find row: ${table} WHERE ${field} = ${value}`)
+            }
+            const rows: T[] = res.rows
+            return rows[0]
+        } finally {
+            client.release()
+        }
+    }
+
     async getDataTableAny ({table}: { table: string }): Promise<any[]> {
         const client = await this.pool.connect()
         try {

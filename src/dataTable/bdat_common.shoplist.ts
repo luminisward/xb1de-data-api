@@ -109,6 +109,20 @@ export default class extends BaseParser {
             result[key] = row[key] > 0 ? await itemParser.parseOne(row[key]) : null
         }
 
+        let npc: any
+        try {
+            npc = await this.db.getDataTableRowWhere({table: 'bdat_common.FLD_npclist', field: 'shop_list', value: row_id.toString()})
+        } catch (error) {
+            npc = null
+        }
+
+        if (npc && npc.row_id) {
+            const npcParser = await getParser('bdat_common.FLD_npclist', this.language)
+            result.npc = await npcParser.parseOne(npc.row_id)
+        } else {
+            result.npc = null
+        }
+
         return result
 
     }
