@@ -50,7 +50,7 @@ export interface TableWithText extends TableType {
     present: any
 }
 
-export default class Bdat_qtMNU_qt extends BaseParser {
+export default class extends BaseParser {
 
     async parse(): Promise<any[]> {
         return []

@@ -43,7 +43,7 @@ enum ArmType {
     机界装备
 }
 
-export default class Bdat_qtMNU_qt extends BaseParser {
+export default class extends BaseParser {
 
 
     async parse (): Promise<any[]> {
