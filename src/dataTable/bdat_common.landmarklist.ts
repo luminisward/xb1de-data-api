@@ -32,16 +32,24 @@ export interface TableWithText extends TableType {
     mapID: any
 }
 
-export default class Bdat_qtMNU_qt extends BaseParser {
+export default class extends BaseParser {
 
     async parse (): Promise<any[]> {
-        return []
+        const rows = await this.db.getDataTable<TableType>({table: this.table})
+
+        const results = await Promise.all(
+            rows.map(async row => {
+                const result: TableWithText = _.clone(row)
+                result.name = await this.db.getMsSingle({table: this.msTable, row_id: row.name, language: this.language})
+                return result
+            })
+        )
+        return results
     }
 
     async parseOne (row_id: number): Promise<TableWithText> {
         const row = await this.db.getDataTableRow<TableType>({table: this.table, row_id})
         const result: TableWithText = _.clone(row)
-
 
         result.name = await this.db.getMsSingle({table: this.msTable, row_id: row.name, language: this.language})
 
@@ -49,6 +57,5 @@ export default class Bdat_qtMNU_qt extends BaseParser {
         result.mapID = row.mapID > 0 ? await mapidParser.parseOne(row.mapID) : null
 
         return result
-
     }
 }
