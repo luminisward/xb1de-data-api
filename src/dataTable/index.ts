@@ -36,6 +36,11 @@ export abstract class BaseParser {
 
     abstract async parseOne(row_id: number): Promise<any>
 
+    async parseOneByField(field: string, value: string): Promise<any> {
+        const row: BaseFields = await this.db.getDataTableRowWhere({table: this.table, field, value})
+        return await this.parseOne(row.row_id)
+    }
+
     fieldsWithoutRowID(row: BaseFields): string[] {
         return Object.keys(row).filter(key => key !== 'row_id')
     }
@@ -45,7 +50,7 @@ export abstract class BaseParser {
         this.msTable = this.table.split('.').map(s => s + '_ms').join('.')
     }
 
-    protected async overrideDataX(resultRow: any): Promise<void> {
+    protected async overrideDataX(resultRow: {[key: string]: any}): Promise<void> {
         try {
             const data = await import(`../../dataX/${this.table}`)
             Object.assign(resultRow, data[resultRow.row_id])
