@@ -23,10 +23,9 @@ interface RequestData {
 }
 
 app.use(async ctx => {
-
-    console.log(ctx.request.body)
-
-    const {game, table, row_id, language, field, value}: RequestData = ctx.request.body
+    const requestData: RequestData = Object.assign({}, ctx.request.query, ctx.request.body)
+    const {game, table, row_id, language, field, value}: RequestData = requestData
+    console.log(requestData)
 
     if (game === 'xb1') {
         const parser = await getParser(table, language)
@@ -35,15 +34,13 @@ app.use(async ctx => {
             ctx.body = result
         } else if (field) {
             const v = value || ''
-            const result = await parser.parseOneByField(field, v)
+            const result = await parser.parseByField(field, v)
             ctx.body = result
         } else {
             const result = await parser.parse()
             ctx.body = result
         }
     }
-
-
 })
 
 app.listen(3000)

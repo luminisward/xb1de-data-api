@@ -36,9 +36,9 @@ export abstract class BaseParser {
 
     abstract async parseOne(row_id: number): Promise<any>
 
-    async parseOneByField(field: string, value: string): Promise<any> {
-        const row: BaseFields = await this.db.getDataTableRowWhere({table: this.table, field, value})
-        return await this.parseOne(row.row_id)
+    async parseByField(field: string, value: string): Promise<any> {
+        const rows: BaseFields[] = await this.db.getDataTableRowWhere({table: this.table, field, value})
+        return rows
     }
 
     fieldsWithoutRowID(row: BaseFields): string[] {

@@ -64,10 +64,10 @@ export class Db {
     async getDataTableRow<T>({table, row_id}: { table: string, row_id: number }): Promise<T> {
         const client = await this.pool.connect()
         try {
-            const text = `SELECT * FROM data."${table}" WHERE row_id = $1`
+            const text = `SELECT * FROM data."${table}" WHERE "row_id" = $1`
             const res = await client.query(text, [row_id])
             if (res.rowCount !== 1) {
-                throw new Error(`Cannot find row: ${table} WHERE row_id = ${row_id}`)
+                throw new Error(`Cannot find row: ${table} WHERE "row_id" = ${row_id}`)
             }
             const rows: T[] = res.rows
             return rows[0]
@@ -76,16 +76,17 @@ export class Db {
         }
     }
 
-    async getDataTableRowWhere<T>({table, field, value}: { table: string, field: string, value: string }): Promise<T> {
+    async getDataTableRowWhere<T>({table, field, value}: { table: string, field: string, value: string }): Promise<T[]> {
         const client = await this.pool.connect()
         try {
-            const text = `SELECT * FROM data."${table}" WHERE ${field} = $1`
+            const text = `SELECT * FROM data."${table}" WHERE "${field}" = $1`
+            console.log(text)
             const res = await client.query(text, [value])
-            if (res.rowCount !== 1) {
-                throw new Error(`Cannot find row: ${table} WHERE ${field} = ${value}`)
+            if (res.rowCount < 1) {
+                throw new Error(`Cannot find row: ${table} WHERE "${field}" = ${value}`)
             }
             const rows: T[] = res.rows
-            return rows[0]
+            return rows
         } finally {
             client.release()
         }
