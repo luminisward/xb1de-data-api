@@ -58,4 +58,15 @@ export default class extends BaseParser {
 
         return result
     }
+
+    async parseByField(field: string, value: string): Promise<any> {
+        const rows: TableType[] = await super.parseByField(field, value)
+        return await Promise.all (
+            rows.map(async row => {
+                const result: TableWithText = _.clone(row)
+                result.name = await this.db.getMsSingle({table: this.msTable, row_id: row.name, language: this.language})
+                return result
+            })
+        )
+    }
 }
