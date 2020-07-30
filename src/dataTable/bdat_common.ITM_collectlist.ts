@@ -19,6 +19,18 @@ export interface TableType extends BaseFields {
 export interface TableWithText extends TableType {
     name: any
     mapID: any
+    type: any
+}
+
+enum CollectionType {
+    蔬菜 = 1,
+    果实,
+    花,
+    小动物,
+    昆虫,
+    自然物,
+    机械零件,
+    不明
 }
 
 export default class extends BaseParser {
@@ -33,8 +45,14 @@ export default class extends BaseParser {
 
         result.name = await this.db.getMsSingle({table: this.msTable, row_id: row.name, language: this.language})
 
-        const mapIdParser = await getParser('bdat_common.FLD_maplist', this.language)
-        result.mapID = await mapIdParser.parseOne(row.mapID)
+        if (row.mapID === 26) {
+            result.mapID = null
+        } else {
+            const mapIdParser = await getParser('bdat_common.FLD_maplist', this.language)
+            result.mapID = await mapIdParser.parseOne(row.mapID)
+        }
+
+        result.type = CollectionType[row.type]
 
         return result
 
