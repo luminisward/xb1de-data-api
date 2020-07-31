@@ -82,9 +82,6 @@ export class Db {
             const text = `SELECT * FROM data."${table}" WHERE "${field}" = $1`
             console.log(text)
             const res = await client.query(text, [value])
-            if (res.rowCount < 1) {
-                throw new Error(`Cannot find row: ${table} WHERE "${field}" = ${value}`)
-            }
             const rows: T[] = res.rows
             return rows
         } finally {
