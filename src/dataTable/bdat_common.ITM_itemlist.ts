@@ -120,7 +120,7 @@ export default class extends BaseParser {
 
         if (row.comment > 0) {
             let mesParser: BaseParser
-            if (row.itemType <= 8) {
+            if (row.itemType <= 9) {
                 mesParser = await getParser('bdat_menu_item.MNU_item_mes_a', this.language)
             } else {
                 mesParser = await getParser('bdat_menu_item.MNU_item_mes_b', this.language)
