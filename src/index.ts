@@ -1,6 +1,8 @@
 import Koa from 'koa'
 import bodyParser from 'koa-bodyparser'
 import logger from 'koa-logger'
+import compress from 'koa-compress'
+import zlib from 'zlib'
 
 import dotenv from 'dotenv'
 import {getParser} from './dataTable'
@@ -11,7 +13,15 @@ dotenv.config()
 const app = new Koa()
 app.use(bodyParser())
 app.use(logger())
-
+app.use(compress({
+    gzip: {
+        flush: zlib.constants.Z_SYNC_FLUSH
+    },
+    deflate: {
+        flush: zlib.constants.Z_SYNC_FLUSH,
+    },
+    br: false // disable brotli
+}))
 
 interface RequestData {
     game: string
