@@ -32,9 +32,9 @@ export abstract class BaseParser {
         this.setTable(table)
     }
 
-    abstract async parse(): Promise<any[]>
+    abstract parse(): Promise<any[]>
 
-    abstract async parseOne(row_id: number): Promise<any>
+    abstract parseOne(row_id: number): Promise<any>
 
     async parseByField(field: string, value: string): Promise<any> {
         const rows: BaseFields[] = await this.db.getDataTableRowWhere({table: this.table, field, value})
@@ -55,7 +55,8 @@ export abstract class BaseParser {
             const data = await import(`../../dataX/${this.table}`)
             Object.assign(resultRow, data[resultRow.row_id])
         } catch (e) {
-            console.log(e.message)
+            const message = e instanceof Error ? e.message : e
+            console.log(message)
         }
 
     }

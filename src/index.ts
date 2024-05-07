@@ -33,7 +33,7 @@ interface RequestData {
 }
 
 app.use(async ctx => {
-    const requestData: RequestData = Object.assign({}, ctx.request.query, ctx.request.body)
+    const requestData: RequestData = Object.assign({}, ctx.request.query, ctx.request.body as any)
     const {game, table, row_id, language, field, value}: RequestData = requestData
     console.log(requestData)
 
